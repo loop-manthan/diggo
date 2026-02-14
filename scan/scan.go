@@ -1,7 +1,7 @@
 package scan
 
 import (
-	"diggo/internal/model"
+	"diggo/model"
 	"os"
 	"path/filepath"
 )

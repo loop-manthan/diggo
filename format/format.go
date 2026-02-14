@@ -1,7 +1,7 @@
 package format
 
 import (
-	"diggo/internal/model"
+	"diggo/model"
 	"fmt"
 	"sort"
 	"strings"
