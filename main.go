@@ -3,14 +3,18 @@ package main
 import (
 	"diggo/format"
 	"diggo/scan"
+	"flag"
 	"fmt"
 	"os"
 )
 
 func main() {
+	depth := flag.Int("depth", -1, "max depth (0=root only, 1=root+children, ...); default full tree")
+	flag.Parse()
+
 	root := "."
-	if len(os.Args) > 1 {
-		root = os.Args[1]
+	if flag.NArg() > 0 {
+		root = flag.Arg(0)
 	}
 
 	dirs, err := scan.Dir(root)
@@ -19,5 +23,5 @@ func main() {
 		os.Exit(1)
 	}
 
-	fmt.Print(format.DirList(dirs))
+	fmt.Print(format.Tree(dirs, root, *depth))
 }
